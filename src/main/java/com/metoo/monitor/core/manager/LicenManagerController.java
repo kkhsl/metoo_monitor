@@ -27,15 +27,15 @@ public class LicenManagerController {
             String sn = null;
             try {
                 sn = this.aesEncryptUtils.decrypt(dto.getSystemSN());
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(dto.getExpireTime());
-                long currentTime = calendar.getTimeInMillis();
-                long timeStampSec = currentTime / 1000;// 13位时间戳（单位毫秒）转换为10位字符串（单位秒）
-                String timestamp = String.format("%010d", timeStampSec);// 当前时间
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.setTime(dto.getExpireTime());
+//                long currentTime = calendar.getTimeInMillis();
+//                long timeStampSec = currentTime / 1000;// 13位时间戳（单位毫秒）转换为10位字符串（单位秒）
+//                String timestamp = String.format("%010d", timeStampSec);// 当前时间
                 Map map = new HashMap();
-                map.put("systemSN", sn);
-                map.put("expireTime", timestamp);
-                return this.aesEncryptUtils.encrypt(JSONObject.toJSONString(map));
+                dto.setSystemSN(sn);
+
+                return this.aesEncryptUtils.encrypt(JSONObject.toJSONString(dto));
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResponseUtil.error("申请码错误");
@@ -43,6 +43,23 @@ public class LicenManagerController {
         }
         return null;
     }
+
+//    @PostMapping("/license")
+//    public Object license(@RequestBody LicenseDto dto){
+//        if(dto.getSystemSN() != null){
+//            String sn = null;
+//            try {
+//                sn = this.aesEncryptUtils.decrypt(dto.getSystemSN());
+//                dto.setSystemSN(sn);
+//                Calendar calendar = Calendar.getInstance();
+//                return this.aesEncryptUtils.encrypt(JSONObject.toJSONString(dto));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                return ResponseUtil.error("申请码错误");
+//            }
+//        }
+//        return null;
+//    }
 
     @RequestMapping("/system")
     public Object systemInfo(HttpServletRequest request){

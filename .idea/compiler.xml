@@ -10,9 +10,8 @@
         <module name="metoo_monitor" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="metoo_monitor" target="1.8" />
-      <module name="metoo_monitor (1)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
