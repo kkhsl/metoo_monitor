@@ -5,9 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
+        <version>2.3.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.metoo.monitor</groupId>
     <artifactId>metoo_monitor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -101,10 +102,14 @@
     </dependencies>
 
     <build>
+        <finalName>metoo_monitor</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.metoo.monitor.MetooMonitorApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

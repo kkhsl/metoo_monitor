@@ -2,7 +2,6 @@ package com.metoo.monitor.core.dto;
 
 
 import com.metoo.monitor.core.entity.User;
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

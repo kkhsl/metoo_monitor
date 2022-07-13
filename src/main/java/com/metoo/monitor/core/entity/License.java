@@ -22,16 +22,16 @@ public class License {
     private String expireTime;
 
     @ApiModelProperty("开始时间")
-    private String startTime;
+    private long startTime;
 
     @ApiModelProperty("结束时间")
-    private String endTime;
+    private long endTime;
 
     @ApiModelProperty("License类型 0：试用版 1，授权版 2：终身版")
-    private Integer type;
+    private String type;
 
     @ApiModelProperty("License版本号")
-    private Integer licenseVersion;
+    private String licenseVersion;
     // 授权信息
     @ApiModelProperty("授权防火墙")
     private int licenseFwNum;

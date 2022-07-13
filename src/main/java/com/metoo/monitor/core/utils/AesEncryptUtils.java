@@ -70,15 +70,15 @@ public class AesEncryptUtils {
         map.put("expireTime","1964053510");
         map.put("systemSN","80B7A0DF-3027-48B1-B56A-BD7AF2C1B0BA");
         LicenseDto dto = new LicenseDto();
-        dto.setStartTime("123456");
-        dto.setEndTime("123456");
+//        dto.setStartTime("123456");
+//        dto.setEndTime("123456");
         dto.setSystemSN("Y3HaRlRtspphK9W8v/4VUr1l4728jYrkAURR5cGpUTWVwy+8fD5741NkqLnZKEXJ");
-        dto.setType(0);
-        dto.setLicenseFwNum(0);
-        dto.setLicenseGatewayNum(0);
-        dto.setLicenseHostNum(0);
-        dto.setLicenseRouterNum(0);
-        dto.setLicenseVersion(0);
+//        dto.setType(0);
+        dto.setLicenseVersion("1.0");
+        dto.setLicenseFireWall(0);
+        dto.setLicenseRouter(0);
+        dto.setLicenseHost(0);
+        dto.setLicenseUe(0);
         String content = JSONObject.toJSONString(dto);
         System.out.println("加密前：" + content);
 

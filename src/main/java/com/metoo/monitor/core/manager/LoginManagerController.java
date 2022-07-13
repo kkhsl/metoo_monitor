@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,7 +37,7 @@ public class LoginManagerController {
     @Autowired
     private IUserService userService;
 
-    @ApiOperation("登录方法")
+    @ApiOperation("登录")
     @RequestMapping("/login")
     public Object login(HttpServletRequest request, HttpServletResponse response,
                         String username, String password, @ApiParam("验证码") String captcha, String isRememberMe){
@@ -48,10 +49,10 @@ public class LoginManagerController {
         Session session = SecurityUtils.getSubject().getSession();
         String sessionCaptcha = (String) session.getAttribute("captcha");
         session.getStartTimestamp();
-        if(captcha != null && !StringUtils.isEmpty(captcha) && !StringUtils.isEmpty(sessionCaptcha)){
+        if(captcha != null && !org.springframework.util.StringUtils.isEmpty(captcha) && !StringUtils.isEmpty(sessionCaptcha)){
             if(sessionCaptcha.toUpperCase().equals(captcha.toUpperCase())){
                 boolean flag = true;// 当前用户是否已登录
-                if(subject.getPrincipal() != null){
+                if(subject.getPrincipal() != null && subject.isAuthenticated()){
                     String userName = subject.getPrincipal().toString();
                     if(userName.equals(username)){
                         flag = false;
@@ -68,7 +69,6 @@ public class LoginManagerController {
                         }
                         subject.login(token);
                         session.removeAttribute("captcha");
-
                         return ResponseUtil.ok();
                         //  return "redirect:/index.jsp";
                     } catch (UnknownAccountException e) {

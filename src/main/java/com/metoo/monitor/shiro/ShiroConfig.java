@@ -1,6 +1,5 @@
 package com.metoo.monitor.shiro;
 
-import com.metoo.monitor.core.filter.MyAccessControlFilter1;
 import com.metoo.monitor.shiro.filter.MyAccessControlFilter;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;

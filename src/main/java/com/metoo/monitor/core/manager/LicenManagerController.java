@@ -22,18 +22,18 @@ public class LicenManagerController {
     private AesEncryptUtils aesEncryptUtils;
 
     @PostMapping("/license")
-    public Object license(@RequestBody LicenseDto dto){
+    public Object license(@RequestBody(required=false)  LicenseDto dto){
         if(dto.getSystemSN() != null){
-            String sn = null;
+//            String sn = null;
             try {
-                sn = this.aesEncryptUtils.decrypt(dto.getSystemSN());
+//                sn = this.aesEncryptUtils.decrypt(dto.getSystemSN());
 //                Calendar calendar = Calendar.getInstance();
 //                calendar.setTime(dto.getExpireTime());
 //                long currentTime = calendar.getTimeInMillis();
 //                long timeStampSec = currentTime / 1000;// 13位时间戳（单位毫秒）转换为10位字符串（单位秒）
 //                String timestamp = String.format("%010d", timeStampSec);// 当前时间
                 Map map = new HashMap();
-                dto.setSystemSN(sn);
+//                dto.setSystemSN(sn);
 
                 return this.aesEncryptUtils.encrypt(JSONObject.toJSONString(dto));
             } catch (Exception e) {
